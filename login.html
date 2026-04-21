@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun App</title>
+
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+
+    .container {
+      margin-top: 50px;
+      position: relative;
+      height: 300px;
+    }
+
+    button {
+      padding: 12px 18px;
+      font-size: 18px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+
+    #message {
+      font-size: 22px;
+      color: green;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Do you like me? 😏</h2>
+
+  <div class="container">
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 😢</button>
+  </div>
+
+  <div id="message">I knew it 😍❤️</div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    function moveButton() {
+      const container = document.querySelector(".container");
+
+      const maxX = container.clientWidth - noBtn.offsetWidth;
+      const maxY = container.clientHeight - noBtn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    // Mobile touch event
+    noBtn.addEventListener("touchstart", function(e) {
+      e.preventDefault(); // prevent click
+      moveButton();
+    });
+
+    // Backup for desktop
+    noBtn.addEventListener("mouseover", moveButton);
+
+    document.getElementById("yesBtn").onclick = function() {
+      document.getElementById("message").style.display = "block";
+    };
+  </script>
+
+</body>
+</html>

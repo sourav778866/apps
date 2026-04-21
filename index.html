@@ -2,48 +2,44 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fun App</title>
+  <title>Enter Code</title>
 
   <style>
     body {
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       font-family: Arial;
-      padding: 20px;
+      background: #f5f5f5;
     }
 
-    h2 {
-      font-size: 22px;
+    .box {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .container {
-      margin-top: 50px;
-      position: relative;
-      height: 300px;
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      width: 200px;
     }
 
     button {
-      padding: 12px 18px;
-      font-size: 18px;
-      margin: 10px;
-      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #4CAF50;
+      color: white;
       border: none;
+      border-radius: 8px;
     }
 
-    #yesBtn {
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    #noBtn {
-      background-color: #f44336;
-      color: white;
-      position: absolute;
-    }
-
-    #message {
-      font-size: 22px;
-      color: green;
-      margin-top: 20px;
+    p {
+      color: red;
       display: none;
     }
   </style>
@@ -51,43 +47,24 @@
 
 <body>
 
-  <h2>Do you like me? 😏</h2>
-
-  <div class="container">
-    <button id="yesBtn">Yes ❤️</button>
-    <button id="noBtn">No 😢</button>
+  <div class="box">
+    <h2>Enter Secret Code 🔐</h2>
+    <input type="password" id="code" placeholder="Enter code">
+    <br>
+    <button onclick="checkCode()">Submit</button>
+    <p id="error">Wrong code 😢</p>
   </div>
 
-  <div id="message">I knew it 😍❤️</div>
-
   <script>
-    const noBtn = document.getElementById("noBtn");
+    function checkCode() {
+      const entered = document.getElementById("code").value;
 
-    function moveButton() {
-      const container = document.querySelector(".container");
-
-      const maxX = container.clientWidth - noBtn.offsetWidth;
-      const maxY = container.clientHeight - noBtn.offsetHeight;
-
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+      if (entered === "9-11-21") { // 👉 change your secret code here
+        window.location.href = "login.html";
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
     }
-
-    // Mobile touch event
-    noBtn.addEventListener("touchstart", function(e) {
-      e.preventDefault(); // prevent click
-      moveButton();
-    });
-
-    // Backup for desktop
-    noBtn.addEventListener("mouseover", moveButton);
-
-    document.getElementById("yesBtn").onclick = function() {
-      document.getElementById("message").style.display = "block";
-    };
   </script>
 
 </body>
