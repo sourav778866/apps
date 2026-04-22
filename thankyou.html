@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+
+.card {
+  margin: 100px auto;
+  max-width: 350px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+  font-size: 28px;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.glow {
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 20px #ff4d6d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1 class="glow">🥺 Thank You So Much Catto❤️</h1>
+  <p>Love You So Much 💖</p>
+  <p>I promise I’ll do better and never hurt you again 🌸</p>
+  <p>You really mean a lot to me... more than I can explain 💫</p>
+  <p>Stay with me? 🥺❤️</p>
+</div>
+
+<script>
+// Floating hearts effect 💖
+for (let i = 0; i < 25; i++) {
+  let heart = document.createElement("div");
+  heart.innerHTML = "💖";
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  heart.style.animationDuration = (Math.random() * 4 + 3) + "s";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>

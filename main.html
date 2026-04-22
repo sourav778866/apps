@@ -108,7 +108,7 @@ button {
 
 <div class="card">
 
-<img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+<img src="peach-goma-peach-and-goma.gif">
 
 <h3 id="typing"></h3>
 
@@ -168,20 +168,7 @@ noBtn.addEventListener("touchstart", (e) => {
 
 noBtn.addEventListener("mouseover", moveButton);
 function sayYes() {
-  const msg = document.getElementById("message");
-  msg.style.display = "block";
-
-  // Heart burst effect 💖
-  for (let i = 0; i < 25; i++) {
-    let heart = document.createElement("div");
-    heart.innerHTML = "💖";
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "100vh";
-    heart.style.fontSize = "20px";
-    heart.style.animation = "float 3s linear";
-    document.body.appendChild(heart);
-  }
+  window.location.href = "thankyou.html";
 }
 </script>
 
