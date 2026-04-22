@@ -1,94 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fun App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
 
-  <style>
-    body {
-      text-align: center;
-      font-family: Arial;
-      padding: 20px;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    text-align: center;
+    color: #333;
+  }
 
-    h2 {
-      font-size: 22px;
-    }
+  .container {
+    padding: 20px;
+  }
 
-    .container {
-      margin-top: 50px;
-      position: relative;
-      height: 300px;
-    }
+  .card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    max-width: 350px;
+    margin: auto;
+    margin-top: 80px;
+  }
 
-    button {
-      padding: 12px 18px;
-      font-size: 18px;
-      margin: 10px;
-      border-radius: 10px;
-      border: none;
-    }
+  input {
+    padding: 10px;
+    width: 80%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
 
-    #yesBtn {
-      background-color: #4CAF50;
-      color: white;
-    }
+  button {
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+  }
 
-    #noBtn {
-      background-color: #f44336;
-      color: white;
-      position: absolute;
-    }
+  #yesBtn {
+    background: #4CAF50;
+    color: white;
+  }
 
-    #message {
-      font-size: 22px;
-      color: green;
-      margin-top: 20px;
-      display: none;
-    }
-  </style>
+  #noBtn {
+    background: #f44336;
+    color: white;
+    position: absolute;
+  }
+
+  #error {
+    color: red;
+    display: none;
+  }
+
+  #mainPage {
+    display: none;
+  }
+
+  img {
+    width: 120px;
+    margin: 10px 0;
+  }
+
+  #message {
+    font-size: 20px;
+    color: #e91e63;
+    display: none;
+    margin-top: 15px;
+  }
+
+  .btn-container {
+    position: relative;
+    height: 200px;
+  }
+</style>
 </head>
 
 <body>
 
-  <h2>Do you like me? 😏</h2>
-
-  <div class="container">
-    <button id="yesBtn">Yes ❤️</button>
-    <button id="noBtn">No 😢</button>
+<!-- 🔐 Login Page -->
+<div id="loginPage" class="container">
+  <div class="card">
+    <h2>Enter Secret Code 🔐</h2>
+    <input type="password" id="code" placeholder="Enter code">
+    <br>
+    <button onclick="checkCode()">Enter</button>
+    <p id="error">Wrong code 😢</p>
   </div>
+</div>
 
-  <div id="message">I knew it 😍❤️</div>
+<!-- 💖 Main Page -->
+<div id="mainPage" class="container">
+  <div class="card">
+    
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3k0b3V0Y2V6Z2J5d2N1c3R0Y2ZpY3N6d3B5d2ZyZ3k0dDZwZ3M3MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYt5jPR6QX5pnqM/giphy.gif">
 
-  <script>
-    const noBtn = document.getElementById("noBtn");
+    <h3>I'm really sorry 😔</h3>
+    <p>Will you accept my apology?</p>
 
-    function moveButton() {
-      const container = document.querySelector(".container");
+    <div class="btn-container">
+      <button id="yesBtn" onclick="sayYes()">Yes ❤️</button>
+      <button id="noBtn">No 😢</button>
+    </div>
 
-      const maxX = container.clientWidth - noBtn.offsetWidth;
-      const maxY = container.clientHeight - noBtn.offsetHeight;
+    <div id="message">Thank you so much Catto 🥺❤️ You made my day!</div>
 
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
+  </div>
+</div>
 
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+<script>
+  // 🔐 Login
+  function checkCode() {
+    const entered = document.getElementById("code").value;
+
+    if (entered === "1234") {
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("mainPage").style.display = "block";
+    } else {
+      document.getElementById("error").style.display = "block";
     }
+  }
 
-    // Mobile touch event
-    noBtn.addEventListener("touchstart", function(e) {
-      e.preventDefault(); // prevent click
-      moveButton();
-    });
+  // 😄 Move NO button
+  const noBtn = document.getElementById("noBtn");
 
-    // Backup for desktop
-    noBtn.addEventListener("mouseover", moveButton);
+  function moveButton() {
+    const container = document.querySelector(".btn-container");
 
-    document.getElementById("yesBtn").onclick = function() {
-      document.getElementById("message").style.display = "block";
-    };
-  </script>
+    const maxX = container.clientWidth - noBtn.offsetWidth;
+    const maxY = container.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  noBtn.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    moveButton();
+  });
+
+  noBtn.addEventListener("mouseover", moveButton);
+
+  function sayYes() {
+    document.getElementById("message").style.display = "block";
+  }
+</script>
 
 </body>
 </html>
