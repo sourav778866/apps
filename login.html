@@ -24,15 +24,16 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     max-width: 350px;
     margin: auto;
-    margin-top: 80px;
+    margin-top: 60px;
   }
 
-  input {
-    padding: 10px;
-    width: 80%;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-top: 10px;
+  img {
+    width: 130px;
+    margin: 10px 0;
+  }
+
+  h3 {
+    margin: 10px 0;
   }
 
   button {
@@ -41,6 +42,7 @@
     font-size: 16px;
     border-radius: 10px;
     border: none;
+    cursor: pointer;
   }
 
   #yesBtn {
@@ -54,18 +56,10 @@
     position: absolute;
   }
 
-  #error {
-    color: red;
-    display: none;
-  }
-
-  #mainPage {
-    display: none;
-  }
-
-  img {
-    width: 120px;
-    margin: 10px 0;
+  .btn-container {
+    position: relative;
+    height: 200px;
+    margin-top: 10px;
   }
 
   #message {
@@ -74,34 +68,18 @@
     display: none;
     margin-top: 15px;
   }
-
-  .btn-container {
-    position: relative;
-    height: 200px;
-  }
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 Login Page -->
-<div id="loginPage" class="container">
-  <div class="card">
-    <h2>Enter Secret Code 🔐</h2>
-    <input type="password" id="code" placeholder="Enter code">
-    <br>
-    <button onclick="checkCode()">Enter</button>
-    <p id="error">Wrong code 😢</p>
-  </div>
-</div>
-
-<!-- 💖 Main Page -->
-<div id="mainPage" class="container">
+<div class="container">
   <div class="card">
     
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3k0b3V0Y2V6Z2J5d2N1c3R0Y2ZpY3N6d3B5d2ZyZ3k0dDZwZ3M3MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYt5jPR6QX5pnqM/giphy.gif">
+    <!-- Cute GIF -->
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
 
-    <h3>I'm really sorry 😔</h3>
+    <h3>I know I messed up... 😔</h3>
     <p>Will you accept my apology?</p>
 
     <div class="btn-container">
@@ -115,19 +93,6 @@
 </div>
 
 <script>
-  // 🔐 Login
-  function checkCode() {
-    const entered = document.getElementById("code").value;
-
-    if (entered === "9-11-21") { // 👉 change your secret code here
-      document.getElementById("loginPage").style.display = "none";
-      document.getElementById("mainPage").style.display = "block";
-    } else {
-      document.getElementById("error").style.display = "block";
-    }
-  }
-
-  // 😄 Move NO button
   const noBtn = document.getElementById("noBtn");
 
   function moveButton() {
@@ -143,11 +108,13 @@
     noBtn.style.top = y + "px";
   }
 
+  // Mobile support
   noBtn.addEventListener("touchstart", function(e) {
     e.preventDefault();
     moveButton();
   });
 
+  // Desktop fallback
   noBtn.addEventListener("mouseover", moveButton);
 
   function sayYes() {
